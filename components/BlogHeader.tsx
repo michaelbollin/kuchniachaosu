@@ -22,19 +22,24 @@ export default function BlogHeader({
           <h4
             className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
           >
-            <PortableText value={description} />
+          <a href="https://instagram.com/kuchniachaosu">@kuchniachaosu</a>
           </h4>
         </header>
       )
 
     case 2:
       return (
-        <header>
-          <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter text-pretty">
+        <header className="mb-10 mt-16 flex flex-col md:mb-12 md:flex-row md:justify-between text-pretty">
+          <h2 className="mb-20 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter text-pretty">
             <Link href="/" className="hover:underline">
               {title}
             </Link>
           </h2>
+          <h4
+            className={` text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
+          >
+          <a href="https://instagram.com/kuchniachaosu">@kuchniachaosu</a>
+          </h4>
         </header>
       )
 

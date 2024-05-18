@@ -27,7 +27,7 @@ export default function IndexPage(props: IndexPageProps) {
       <Layout preview={preview} loading={loading}>
         <Container>
           <BlogHeader title={title} description={description} level={1} />
-          {heroPost && (
+          {heroPost && false && (
             <HeroPost
               title={heroPost.title}
               coverImage={heroPost.coverImage}
@@ -37,9 +37,8 @@ export default function IndexPage(props: IndexPageProps) {
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {posts.length > 0 && <MoreStories posts={posts} />}
         </Container>
-        <IntroTemplate />
       </Layout>
     </>
   )
