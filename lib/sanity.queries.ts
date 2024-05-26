@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity'
+import { formatISO } from 'date-fns';
 
 const postFields = groq`
   _id,
@@ -13,8 +14,10 @@ const postFields = groq`
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
+const todayDate = formatISO(new Date(), { representation: 'date' });
+
 export const indexQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
+*[_type == "post" && date <= "${todayDate}"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
 
@@ -31,11 +34,11 @@ export const postAndMoreStoriesQuery = groq`
 }`
 
 export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
+*[_type == "post" && defined(slug.current) && date <= "${todayDate}"][].slug.current
 `
 
 export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
+*[_type == "post" && slug.current == $slug && date <= "${todayDate}"][0] {
   ${postFields}
 }
 `
