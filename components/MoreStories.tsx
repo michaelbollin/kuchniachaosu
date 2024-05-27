@@ -7,7 +7,7 @@ export default function MoreStories({ posts }: { posts: Post[] }) {
       {/*} <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
         More Stories
   </h2>*/}
-      <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-3 md:gap-x-4 md:gap-y-8 lg:gap-x-8">
+      <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-4 md:gap-x-4 md:gap-y-8 lg:gap-x-8">
         {posts.map((post) => (
           <PostPreview
             key={post._id}

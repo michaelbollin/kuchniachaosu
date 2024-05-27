@@ -23,11 +23,11 @@ export const indexQuery = groq`
 
 export const postAndMoreStoriesQuery = groq`
 {
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  "post": *[_type == "post" && slug.current == $slug && date <= "${todayDate}"] | order(_updatedAt desc) [0] {
     content,
     ${postFields}
   },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...9] {
+  "morePosts": *[_type == "post" && slug.current != $slug && date <= "${todayDate}"] | order(date desc, _updatedAt desc) [0...9] {
     content,
     ${postFields}
   }

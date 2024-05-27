@@ -22,12 +22,12 @@ export default function PostPreview({
           priority={false}
         />
       </div>
-      <h3 className="mb-3 text-3xl leading-snug text-balance">
+      <h3 className="mb-1 text-xl leading-snug text-balance">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      <div className="mb-4 text-lg">
+      <div className="mb-4 text-base text-[#888888]">
         <Date dateString={date} />
       </div>
       {excerpt && (
