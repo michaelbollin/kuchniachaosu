@@ -30,7 +30,7 @@ export default function BlogHeader({
     case 2:
       return (
         <header className="mb-10 mt-16 flex flex-col md:mb-12 md:flex-row md:justify-between text-pretty">
-          <h2 className="mb-20 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter text-pretty">
+          <h2 className="mb-20 text-3xl font-bold leading-tight tracking-tight md:text-3xl md:tracking-tighter text-pretty">
             <Link href="/" className="hover:underline">
               {title}
             </Link>
