@@ -141,4 +141,20 @@ export default defineType({
       return { title, media, subtitle: subtitles.join(' ') }
     },
   },
+  orderings: [
+    {
+      title: 'Publication Date, New',
+      name: 'dateDesc',
+      by: [
+        { field: 'date', direction: 'desc' }
+      ]
+    },
+    {
+      title: 'Publication Date, Old',
+      name: 'dateAsc',
+      by: [
+        { field: 'date', direction: 'asc' }
+      ]
+    }
+  ]
 })
