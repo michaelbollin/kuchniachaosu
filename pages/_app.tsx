@@ -3,6 +3,7 @@ import 'tailwindcss/tailwind.css'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 import { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
+import { Analytics } from "@vercel/analytics/react"
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -21,6 +22,7 @@ export default function App({
       {draftMode ? (
         <PreviewProvider token={token}>
           <Component {...pageProps} />
+          <Analytics />
         </PreviewProvider>
       ) : (
         <Component {...pageProps} />
