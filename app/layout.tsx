@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import Script from 'next/script'
 
 export default function RootLayout({
   children,
@@ -7,7 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script src="https://scripts.simpleanalyticscdn.com/latest.js" /> 
+      </body>
     </html>
   )
 }
