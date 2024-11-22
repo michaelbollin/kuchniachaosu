@@ -14,20 +14,17 @@ type SitemapLocation = {
   lastmod?: Date
 }
 
-// Use this to manually add routes to the sitemap
 const defaultUrls: SitemapLocation[] = [
   {
     url: '/',
     changefreq: 'daily',
     priority: 1,
-    lastmod: new Date(), // or custom date: '2023-06-12T00:00:00.000Z',
+    lastmod: new Date(),
   },
-  //   { url: '/about', priority: 0.5 },
-  //   { url: '/blog', changefreq: 'weekly', priority: 0.7 },
 ]
 
 const createSitemap = (locations: SitemapLocation[]) => {
-  const baseUrl = process.env.NEXT_PUBLIC_URL // Make sure to configure this
+  const baseUrl = process.env.NEXT_PUBLIC_URL
   return `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${locations
@@ -48,13 +45,12 @@ const createSitemap = (locations: SitemapLocation[]) => {
 }
 
 export default function SiteMap() {
-  // getServerSideProps will do the heavy lifting
+  return null
 }
 
 export async function getServerSideProps({ res }) {
   const client = getClient()
 
-  // Get list of Post urls
   const [posts = []] = await Promise.all([getAllPosts(client)])
   const postUrls: SitemapLocation[] = posts
     .filter(({ slug = '' }) => slug)
@@ -66,12 +62,8 @@ export async function getServerSideProps({ res }) {
       }
     })
 
-  // ... get more routes here
-
-  // Return the default urls, combined with dynamic urls above
   const locations = [...defaultUrls, ...postUrls]
 
-  // Set response to XML
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(locations))
   res.end()
